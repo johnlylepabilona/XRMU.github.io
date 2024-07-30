@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>XRMU</title>
+  <meta name="description" content="XRMU">
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.4.0/dist/aframe-extras.min.js"></script>
+</head>
+
+<body>
+  <a-scene>
+    <a-assets>
+      <!-- Assets -->
+      <a-assets-items id="Cytokine" src="./assets/Cytokine.glb"></a-assets-items>
+      <a-assets-items id="Cytokine_1" src="./assets/Cytokine_1.glb"></a-assets-items>
+      <a-assets-items id="JAK_1" src="./assets/JAK_1.glb"></a-assets-items>
+      <a-assets-items id="JAK_2" src="./assets/JAK_2.glb"></a-assets-items>
+      <a-assets-items id="STAT_Dimers" src="./assets/STAT_Dimers.glb"></a-assets-items>
+      <a-assets-items id="Type_l_Cytokine_Receptor_L" src="./assets/Type_l_Cytokine_Receptor_L.glb"></a-assets-items>
+      <a-assets-items id="Type_l_Cytokine_Receptor_R" src="./assets/Type_l_Cytokine_Receptor_R.glb"></a-assets-items>
+      <a-assets-items id="Type_ll_Cytokine_Receptor_L_Lower"
+        src="./assets/Type_ll_Cytokine_Receptor_L_Lower.glb"></a-assets-items>
+      <a-assets-items id="Type_ll_Cytokine_Receptor_L_Upper"
+        src="./assets/Type_ll_Cytokine_Receptor_L_Upper.glb"></a-assets-items>
+      <a-assets-items id="Type_ll_Cytokine_Receptor_R_Lower"
+        src="./assets/Type_ll_Cytokine_Receptor_R_Lower.glb"></a-assets-items>
+      <a-assets-items id="Type_ll_Cytokine_Receptor_R_Upper"
+        src="./assets/Type_ll_Cytokine_Receptor_R_Upper.glb"></a-assets-items>
+      <a-assets-items id="Type_ll_Cytokine_Receptor_with_bones"
+        src="./assets/Type_ll_Cytokine_Receptor_with_bones.glb"></a-assets-items>
+      <a-assets-items id="Type_ll_Cytokine_Receptor_with_bones_animated"
+        src="./assets/Type_ll_Cytokine_Receptor_with_bones_animated.glb"></a-assets-items>
+      <a-assets-items id="Cytokine_1_fbx" src="./assets/Type ll Cytokine Receptor with bones.fbx"></a-assets-items>
+      <a-assets-items id="Cell" src="./assets/Cell.glb"></a-assets-items>
+    </a-assets>
+
+    <!-- camera -->
+    <a-camera position="0 0 5.860"></a-camera>
+
+    <!-- Models -->
+    <a-entity gltf-model="#Cytokine" scale="0.300 0.300 0.300" position="-6.644 5.385 0"></a-entity>
+    <a-entity gltf-model="#Cytokine_1" scale="0.300 0.300 0.300" position="5.184 5.567 0"></a-entity>
+    <a-entity gltf-model="#JAK_1" scale="0.300 0.300 0.300" position="4.746 2.866 0"></a-entity>
+    <a-entity gltf-model="#JAK_2" scale="0.300 0.300 0.300" position="-7.949 5.759 0"></a-entity>
+    <a-entity gltf-model="#STAT_Dimers" scale="0.300 0.300 0.300" position="1.536 5.909 0"></a-entity>
+    <a-entity gltf-model="#Type_l_Cytokine_Receptor_L" scale="0.300 0.300 0.300" position="-7.128 -0.411 0"></a-entity>
+    <a-entity gltf-model="#Type_l_Cytokine_Receptor_R" scale="0.300 0.300 0.300" position="-5.047 -0.484 0"></a-entity>
+    <a-entity gltf-model="#Type_ll_Cytokine_Receptor_L_Lower" scale="0.300 0.300 0.300"
+      position="5.969 -0.794 0"></a-entity>
+    <a-entity gltf-model="#Type_ll_Cytokine_Receptor_L_Upper" scale="0.300 0.300 0.300"
+      position="5.878 -0.904 0"></a-entity>
+    <a-entity gltf-model="#Type_ll_Cytokine_Receptor_R_Lower" scale="0.300 0.300 0.300"
+      position="2.492 -0.785 0"></a-entity>
+    <a-entity gltf-model="#Type_ll_Cytokine_Receptor_R_Upper" scale="0.300 0.300 0.300"
+      position="2.784 -0.996 0"></a-entity>
+    <a-entity gltf-model="#Type_ll_Cytokine_Receptor_with_bones" scale="0.300 0.300 0.300" position="-0.730 1.472 0"
+      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
+    </a-entity>
+    <a-entity id="cell"></a-entity>
+
+    <!-- Working animation from blender -->
+    <a-entity gltf-model="#Type_ll_Cytokine_Receptor_with_bones_animated" scale="0.300 0.300 0.300" position="3 1.472 0"
+      animation-mixer="clip: *">
+    </a-entity>
+    <!-- Working FBX files -->
+    <!-- <a-entity fbx-model="src: url(./assets/Type ll Cytokine Receptor with bones.fbx)" animation-mixer="clip: *">
+    </a-entity>
+    <a-entity fbx-model="src: url(./assets/Cytokine_1_fbx.fbx)"></a-entity>
+    <a-entity fbx-model="src: url(./assets/STAT Dimers.fbx)"></a-entity>
+    <a-entity fbx-model="src: url(./assets/cell LP.fbx)"></a-entity> -->
+
+
+
+
+    <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+    <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+    <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+    <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane> -->
+    <a-sky color="#00000"></a-sky>
+  </a-scene>
+  <script src="./utils/cell-loop.js"></script>
+</body>
+
+</html>
