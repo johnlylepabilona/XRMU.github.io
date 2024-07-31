@@ -2,7 +2,8 @@ AFRAME.registerComponent('rotate-bone', {
   schema: {
     boneName: {type: 'string'},
     angle: {type: 'number', default: 0.1},
-    duration: {type: 'number', default: 1000}
+    duration: {type: 'number', default: 1000},
+    pauseDuration: {type: 'number', default: 6000} // Pause duration in milliseconds
   },
   init: function () {
     this.bone = null;
@@ -32,12 +33,21 @@ AFRAME.registerComponent('rotate-bone', {
 
     const data = this.data;
     const halfDuration = data.duration / 2;
+    const pauseDuration = data.pauseDuration;
 
     const update = (time) => {
       this.elapsedTime += 16; // Approximate frame duration (16ms for 60fps)
       if (this.elapsedTime >= halfDuration) {
         this.direction *= -1;
         this.elapsedTime = 0;
+        
+        if (this.direction === -1 || this.direction === 1) {
+          // When direction is reset, apply the pause
+          setTimeout(() => {
+            requestAnimationFrame(update);
+          }, pauseDuration);
+          return;
+        }
       }
 
       const rotationIncrement = (data.angle / halfDuration) * 16 * this.direction;
@@ -55,7 +65,8 @@ AFRAME.registerComponent('rotate-bone2', {
   schema: {
     boneName: {type: 'string'},
     angle: {type: 'number', default: 0.1},
-    duration: {type: 'number', default: 1000}
+    duration: {type: 'number', default: 1000},
+    pauseDuration: {type: 'number', default: 7000} // Pause duration in milliseconds
   },
   init: function () {
     this.bone = null;
@@ -85,12 +96,21 @@ AFRAME.registerComponent('rotate-bone2', {
 
     const data = this.data;
     const halfDuration = data.duration / 2;
+    const pauseDuration = data.pauseDuration;
 
     const update = (time) => {
       this.elapsedTime += 16; // Approximate frame duration (16ms for 60fps)
       if (this.elapsedTime >= halfDuration) {
         this.direction *= -1;
         this.elapsedTime = 0;
+
+        if (this.direction === -1 || this.direction === 1) {
+          // When direction is reset, apply the pause
+          setTimeout(() => {
+            requestAnimationFrame(update);
+          }, pauseDuration);
+          return;
+        }
       }
 
       const rotationIncrement = (data.angle / halfDuration) * 16 * this.direction;

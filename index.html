@@ -7,6 +7,7 @@
   <meta name="description" content="XRMU">
   <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.4.0/dist/aframe-extras.min.js"></script>
+  <script src="./utils/cell-loop.js"></script>
   <script src="./utils/receptors-animation.js"></script>
 </head>
 
@@ -61,13 +62,12 @@
       position="2.784 -0.996 0"></a-entity> -->
     <a-entity id="receptors" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.500 0.500 0.500"
       position="-0.730 0.032 -2.621" rotate-bone="boneName: Bone001; angle: 0.4; duration: 6000"
-      rotate-bone2="boneName: Bone004; angle: 0.4; duration: 6000"></a-entity>
+      rotate-bone2="boneName: Bone004; angle: 0.4; duration: 8000"></a-entity>
 
 
     <a-entity id="receptors" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.500 0.500 0.500"
       position="0.129 0.032 -2.621" rotate-bone="boneName: Bone001; angle: 0.4; duration: 6000"
-      rotate-bone2="boneName: Bone004; angle: 0.4; duration: 6000" rotation="0 180 0"
-      obb-collider="showColliders: true"></a-entity>
+      rotate-bone2="boneName: Bone004; angle: 0.4; duration: 8000" rotation="0 180 0"></a-entity>
 
     <a-entity id="cell" position="-35.431 -1.353 0"></a-entity>
 
@@ -92,8 +92,6 @@
     <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane> -->
     <a-sky color="#00000"></a-sky>
   </a-scene>
-  <script src="./utils/cell-loop.js"></script>
-  <!-- <script src="./utils/receptors-animation.js"></script> -->
 </body>
 
 </html>
