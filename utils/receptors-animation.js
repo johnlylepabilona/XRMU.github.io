@@ -51,7 +51,7 @@ AFRAME.registerComponent('rotate-bone', {
   }
 });
 
-AFRAME.registerComponent('rotate-bone003', {
+AFRAME.registerComponent('rotate-bone2', {
   schema: {
     boneName: {type: 'string'},
     angle: {type: 'number', default: 0.1},
