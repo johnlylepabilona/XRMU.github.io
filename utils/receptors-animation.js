@@ -7,10 +7,8 @@ AFRAME.registerComponent('rotate-bone', {
   },
   init: function () {
     this.bone = null;
-    this.initialRotationY = 0;
+    this.initialRotationZ = 0;
     this.elapsedTime = 0;
-    this.direction = 1;
-    this.currentRotation = 0;
 
     const el = this.el;
     const data = this.data;
@@ -21,7 +19,7 @@ AFRAME.registerComponent('rotate-bone', {
         model.traverse((node) => {
           if (node.isBone && node.name === data.boneName) {
             this.bone = node;
-            this.initialRotationY = this.bone.rotation.y; // Capture initial rotation
+            this.initialRotationZ = this.bone.rotation.z; // Capture initial rotation
             this.animate(); // Start animation
           }
         });
@@ -32,32 +30,33 @@ AFRAME.registerComponent('rotate-bone', {
     if (!this.bone) return;
 
     const data = this.data;
-    const halfDuration = data.duration / 2;
-    const pauseDuration = data.pauseDuration;
 
-    const update = (time) => {
-      this.elapsedTime += 16; // Approximate frame duration (16ms for 60fps)
-      if (this.elapsedTime >= halfDuration) {
-        this.direction *= -1;
-        this.elapsedTime = 0;
-        
-        if (this.direction === -1 || this.direction === 1) {
-          // When direction is reset, apply the pause
-          setTimeout(() => {
-            requestAnimationFrame(update);
-          }, pauseDuration);
-          return;
+    const animateTo = (targetAngle, duration) => {
+      const startAngle = this.bone.rotation.z;
+      const angleChange = targetAngle - startAngle;
+      const startTime = performance.now();
+
+      const animateStep = (time) => {
+        const elapsed = time - startTime;
+        const t = Math.min(elapsed / duration, 1); // Clamp t to [0, 1]
+        this.bone.rotation.z = startAngle + angleChange * t;
+
+        if (t < 1) {
+          requestAnimationFrame(animateStep);
         }
-      }
+      };
 
-      const rotationIncrement = (data.angle / halfDuration) * 16 * this.direction;
-      this.currentRotation += rotationIncrement;
-      this.bone.rotation.z = this.initialRotationY + this.currentRotation; // Apply rotation incrementally
-
-      requestAnimationFrame(update);
+      requestAnimationFrame(animateStep);
     };
 
-    requestAnimationFrame(update);
+
+    document.querySelector('#cytokine1').addEventListener('animationcomplete__move', () => {
+      animateTo(data.angle, 1000);
+    })
+
+    document.querySelector('#cytokine1').addEventListener('animationcomplete__shrink', () => {
+      animateTo(this.initialRotationZ, 1000);
+    })
   }
 });
 
@@ -70,10 +69,7 @@ AFRAME.registerComponent('rotate-bone2', {
   },
   init: function () {
     this.bone = null;
-    this.initialRotationY = 0;
-    this.elapsedTime = 0;
-    this.direction = 1;
-    this.currentRotation = 0;
+    this.initialRotationX = 0;
 
     const el = this.el;
     const data = this.data;
@@ -84,7 +80,7 @@ AFRAME.registerComponent('rotate-bone2', {
         model.traverse((node) => {
           if (node.isBone && node.name === data.boneName) {
             this.bone = node;
-            this.initialRotationY = this.bone.rotation.y; // Capture initial rotation
+            this.initialRotationX = this.bone.rotation.x; // Capture initial rotation
             this.animate(); // Start animation
           }
         });
@@ -95,31 +91,32 @@ AFRAME.registerComponent('rotate-bone2', {
     if (!this.bone) return;
 
     const data = this.data;
-    const halfDuration = data.duration / 2;
-    const pauseDuration = data.pauseDuration;
 
-    const update = (time) => {
-      this.elapsedTime += 16; // Approximate frame duration (16ms for 60fps)
-      if (this.elapsedTime >= halfDuration) {
-        this.direction *= -1;
-        this.elapsedTime = 0;
+    const animateTo = (targetAngle, duration) => {
+      const startAngle = this.bone.rotation.x;
+      const angleChange = targetAngle - startAngle;
+      const startTime = performance.now();
 
-        if (this.direction === -1 || this.direction === 1) {
-          // When direction is reset, apply the pause
-          setTimeout(() => {
-            requestAnimationFrame(update);
-          }, pauseDuration);
-          return;
+      const animateStep = (time) => {
+        const elapsed = time - startTime;
+        const t = Math.min(elapsed / duration, 1); // Clamp t to [0, 1]
+        this.bone.rotation.x = startAngle + angleChange * t;
+
+        if (t < 1) {
+          requestAnimationFrame(animateStep);
         }
-      }
+      };
 
-      const rotationIncrement = (data.angle / halfDuration) * 16 * this.direction;
-      this.currentRotation += rotationIncrement;
-      this.bone.rotation.x = this.initialRotationY + this.currentRotation; // Apply rotation incrementally
-
-      requestAnimationFrame(update);
+      requestAnimationFrame(animateStep);
     };
 
-    requestAnimationFrame(update);
+
+    document.querySelector('#cytokine1').addEventListener('animationcomplete__move', () => {
+      animateTo(data.angle, 1000);
+    })
+
+    document.querySelector('#cytokine1').addEventListener('animationcomplete__shrink', () => {
+      animateTo(this.initialRotationX, 1000);
+    })
   }
 });
