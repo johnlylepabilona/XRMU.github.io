@@ -1,8 +1,9 @@
 AFRAME.registerComponent('move-cytokine', {
   schema: {
-    finalPos: { type: 'number', default: 0 },
+    finalPos: { type: 'string', default: '-0.241 4.362 -2.419' },
+    maxScale: { type: 'string', default: '-0.241 4.362 -2.419' },
     duration: { type: 'number', default: 1000 },
-    pauseDuration: { type: 'number', default: 6000 },
+    pauseDuration: { type: 'number', default: 10000},
   },
 
   init: function () {
@@ -22,20 +23,34 @@ AFRAME.registerComponent('move-cytokine', {
       const cytokineScaleY = el.getAttribute('scale').y;
       const cytokineScaleZ = el.getAttribute('scale').z;
 
+      el.setAttribute('animation__spawn', {
+        property: 'scale',
+        from: `0 0 0`,
+        to: `0.500 0.500 0.500`,
+        dur: Math.floor(Math.random() * (5000 - 3000 + 1)) + 3000,
+        delay: Math.floor(Math.random() * (5000 - 3000 + 1)) + 3000,
+        easing: 'easeInOutSine',
+        startEvents: 'startSpawn'
+      })
+
+      el.addEventListener('animationcomplete__spawn', () => {
+        el.emit(`startAnim1`, null, false);
+      })
+
       el.setAttribute('animation__move', {
         property: 'position',
         from: `${cytokineX} ${cytokineY} ${cytokineZ}`,
-        to: `-0.241 4.362 -2.419`,
+        to: data.finalPos,
         dur: data.duration,
-        delay: data.pauseDuration,
+        delay: Math.floor(Math.random() * (10000 - 3000 + 1)) + 3000,
         easing: 'easeInOutSine',
         startEvents: 'startAnim1'
       });
 
       el.setAttribute('animation__shrink', {
         property: 'scale',
-        from: `${cytokineScaleX} ${cytokineScaleY} ${cytokineScaleZ}`,
-        to: `0 0 0`,
+        from: data.maxScale,
+        to: `${cytokineScaleX} ${cytokineScaleY} ${cytokineScaleZ}`,
         dur: 2000,
         delay: 2000,
         easing: 'easeInOutSine',
@@ -48,13 +63,12 @@ AFRAME.registerComponent('move-cytokine', {
       });
 
       el.addEventListener('animationcomplete__shrink', () => {
-        el.setAttribute('scale', `${cytokineScaleX} ${cytokineScaleY} ${cytokineScaleZ}`); // Reset scale
+        // el.setAttribute('scale', `${cytokineScaleX} ${cytokineScaleY} ${cytokineScaleZ}`); // Reset scale
         el.setAttribute('position', `${cytokineX} ${cytokineY} ${cytokineZ}`); // Reset position
-        el.emit(`startAnim1`, null, false);
+        el.emit(`startSpawn`, null, false);
       });
-
-      // Start the initial animation sequence
-      el.emit(`startAnim1`, null, false);
+      el.emit(`startSpawn`, null, false);
     });
+
   }
 });

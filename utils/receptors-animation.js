@@ -3,7 +3,7 @@ AFRAME.registerComponent('rotate-bone', {
     boneName: {type: 'string'},
     angle: {type: 'number', default: 0.1},
     duration: {type: 'number', default: 1000},
-    pauseDuration: {type: 'number', default: 6000} // Pause duration in milliseconds
+    cytokineId: {type: 'string', default: 'cytokine1'}
   },
   init: function () {
     this.bone = null;
@@ -50,12 +50,12 @@ AFRAME.registerComponent('rotate-bone', {
     };
 
 
-    document.querySelector('#cytokine1').addEventListener('animationcomplete__move', () => {
-      animateTo(data.angle, 1000);
+    document.querySelector(`#${data.cytokineId}`).addEventListener('animationcomplete__move', () => {
+      animateTo(data.angle, data.duration);
     })
 
-    document.querySelector('#cytokine1').addEventListener('animationcomplete__shrink', () => {
-      animateTo(this.initialRotationZ, 1000);
+    document.querySelector(`#${data.cytokineId}`).addEventListener('animationcomplete__shrink', () => {
+      animateTo(this.initialRotationZ, data.duration);
     })
   }
 });
@@ -65,7 +65,7 @@ AFRAME.registerComponent('rotate-bone2', {
     boneName: {type: 'string'},
     angle: {type: 'number', default: 0.1},
     duration: {type: 'number', default: 1000},
-    pauseDuration: {type: 'number', default: 7000} // Pause duration in milliseconds
+    cytokineId: {type: 'string', default: 'cytokine1'}
   },
   init: function () {
     this.bone = null;
@@ -111,12 +111,12 @@ AFRAME.registerComponent('rotate-bone2', {
     };
 
 
-    document.querySelector('#cytokine1').addEventListener('animationcomplete__move', () => {
-      animateTo(data.angle, 1000);
+    document.querySelector(`#${data.cytokineId}`).addEventListener('animationcomplete__move', () => {
+      animateTo(data.angle, data.duration);
     })
 
-    document.querySelector('#cytokine1').addEventListener('animationcomplete__shrink', () => {
-      animateTo(this.initialRotationX, 1000);
+    document.querySelector(`#${data.cytokineId}`).addEventListener('animationcomplete__shrink', () => {
+      animateTo(this.initialRotationX, data.duration);
     })
   }
 });
