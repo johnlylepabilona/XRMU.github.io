@@ -120,3 +120,38 @@ AFRAME.registerComponent('rotate-bone2', {
     })
   }
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const receptors = document.querySelector('#receptors');
+
+  const checkModelLoaded = (element, callback) => {
+    if (element.getObject3D('mesh')) {
+      callback();
+    } else {
+      element.addEventListener('model-loaded', callback);
+    }
+  };
+
+  for (let i = 0; i < receptors.children.length; i++) {
+    const el = receptors.children[i];
+
+    checkModelLoaded(el, () => {
+      const position = el.object3D.position;
+
+      const cellX = position.x;
+      const cellZ = position.z;
+
+      el.setAttribute('animation', {
+        property: 'position',
+        from: `${cellX} 0 ${cellZ}`,
+        to: `${cellX} 0.2 ${cellZ}`,
+        loop: true,
+        dur: 900,
+        dir: 'alternate',
+        delay: i * 1000,
+        easing: 'easeInOutSine'
+      });
+    });
+  }
+});

@@ -64,56 +64,70 @@
       position="2.784 -0.996 0"></a-entity> -->
 
     <!-- Receptors -->
-    <a-entity id="receptorGroup1">
-      <a-entity id="cytokine1" gltf-model="#Cytokine" scale="0 0 0" position="7.494 26.532 -2.419"
-        move-cytokine="finalPos: -0.241 4.362 -2.419; maxScale: 0.500 0.500 0.500;"></a-entity>
-      <a-entity id="receptors1" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.500 0.500 0.500"
-        position="-0.730 0.032 -2.621"
-        rotate-bone="boneName: Bone001; angle: 0.2; duration: 1000; cytokineId:cytokine1;"
-        rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine1;"></a-entity>
-      <a-entity id="receptors1" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.500 0.500 0.500"
-        position="0.129 0.032 -2.621" rotate-bone="boneName: Bone001; angle: 0.2; duration: 1000; cytokineId:cytokine1;"
-        rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine1;"
-        rotation="0 180 0"></a-entity>
-    </a-entity>
+    <a-entity id="receptors">
+      <a-entity id="receptorGroup1" position="-6.357 0 0.000">
+        <a-entity id="cytokine1" gltf-model="#Cytokine" scale="0 0 0" position="7.494 26.532 -2.419"
+          move-cytokine="finalPos: -0.241 4.362 -2.419; maxScale: 0.500 0.500 0.500;"></a-entity>
+        <a-entity id="receptors1" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.500 0.500 0.500"
+          position="-0.730 0 -2.621" rotate-bone="boneName: Bone001; angle: 0.2; duration: 1000; cytokineId:cytokine1;"
+          rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine1;"></a-entity>
+        <a-entity id="receptors1" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.500 0.500 0.500"
+          position="0.129 0 -2.621" rotate-bone="boneName: Bone001; angle: 0.2; duration: 1000; cytokineId:cytokine1;"
+          rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine1;"
+          rotation="0 180 0"></a-entity>
+        <a-entity light="angle: 55; color: #ffffff; decay: 0; distance: 1; type: spot"
+          position="0.129 0 0.383"></a-entity>
 
-    <a-entity id="receptorGroup2" position="-14.791 0 -3.430">
-      <a-entity id="cytokine2" gltf-model="#Cytokine" scale="0 0 0" position="-0.241 26.532 23.349"
-        move-cytokine="finalPos: -0.241 4.362 -2.419; maxScale: 0.500 0.500 0.500;"></a-entity>
-      <a-entity id="receptors2" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.500 0.500 0.500"
-        position="-0.730 0.032 -2.621"
-        rotate-bone="boneName: Bone001; angle: 0.2; duration: 1000; cytokineId:cytokine2;"
-        rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine2;"></a-entity>
-      <a-entity id="receptors2" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.500 0.500 0.500"
-        position="0.129 0.032 -2.621" rotate-bone="boneName: Bone001; angle: 0.2; duration: 1000; cytokineId:cytokine2"
-        rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine2;"
-        rotation="0 180 0"></a-entity>
-    </a-entity>
+      </a-entity>
 
-    <a-entity id="receptorGroup3" position="-30.467 0 0.111">
-      <a-entity id="cytokine3" gltf-model="#Cytokine" scale="0 0 0" position="-0.241 26.532 23.349"
-        move-cytokine="finalPos: -0.241 4.362 -2.419; maxScale: 0.500 0.500 0.500;"></a-entity>
-      <a-entity id="receptors2" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.500 0.500 0.500"
-        position="-0.730 0.032 -2.621"
-        rotate-bone="boneName: Bone001; angle: 0.2; duration: 1000; cytokineId:cytokine3;"
-        rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine3;"></a-entity>
-      <a-entity id="receptors2" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.500 0.500 0.500"
-        position="0.129 0.032 -2.621" rotate-bone="boneName: Bone001; angle: 0.2; duration: 1000; cytokineId:cytokine3"
-        rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine3;"
-        rotation="0 180 0"></a-entity>
-    </a-entity>
 
-    <a-entity id="receptorGroup4" position="13.463 0 -3.458">
-      <a-entity id="cytokine4" gltf-model="#Cytokine" scale="0 0 0" position="-0.241 26.532 23.349"
-        move-cytokine="finalPos: -0.241 4.362 -2.419; maxScale: 0.500 0.500 0.500;"></a-entity>
-      <a-entity id="receptors2" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.500 0.500 0.500"
-        position="-0.730 0.032 -2.621"
-        rotate-bone="boneName: Bone001; angle: 0.2; duration: 1000; cytokineId:cytokine4;"
-        rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine4;"></a-entity>
-      <a-entity id="receptors2" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.500 0.500 0.500"
-        position="0.129 0.032 -2.621" rotate-bone="boneName: Bone001; angle: 0.2; duration: 1000; cytokineId:cytokine4"
-        rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine4;"
-        rotation="0 180 0"></a-entity>
+      <a-entity id="receptorGroup2" position="-19.279 0 -3.430">
+        <a-entity id="cytokine2" gltf-model="#Cytokine" scale="0 0 0" position="-0.241 26.532 23.349"
+          move-cytokine="finalPos: -0.241 4.362 -2.419; maxScale: 0.500 0.500 0.500;"></a-entity>
+        <a-entity id="receptors2" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.500 0.500 0.500"
+          position="-0.730 0 -2.621" rotate-bone="boneName: Bone001; angle: 0.2; duration: 1000; cytokineId:cytokine2;"
+          rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine2;"></a-entity>
+        <a-entity id="receptors2" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.500 0.500 0.500"
+          position="0.129 0 -2.621" rotate-bone="boneName: Bone001; angle: 0.2; duration: 1000; cytokineId:cytokine2"
+          rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine2;"
+          rotation="0 180 0"></a-entity>
+      </a-entity>
+
+      <a-entity id="receptorGroup3" position="-28.944 0 0.111">
+        <a-entity id="cytokine3" gltf-model="#Cytokine" scale="0 0 0" position="-0.241 26.532 23.349"
+          move-cytokine="finalPos: -0.241 4.362 -2.419; maxScale: 0.500 0.500 0.500;"></a-entity>
+        <a-entity id="receptors2" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.500 0.500 0.500"
+          position="-0.730 0 -2.621" rotate-bone="boneName: Bone001; angle: 0.2; duration: 1000; cytokineId:cytokine3;"
+          rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine3;"></a-entity>
+        <a-entity id="receptors2" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.500 0.500 0.500"
+          position="0.129 0 -2.621" rotate-bone="boneName: Bone001; angle: 0.2; duration: 1000; cytokineId:cytokine3"
+          rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine3;"
+          rotation="0 180 0"></a-entity>
+      </a-entity>
+
+      <a-entity id="receptorGroup4" position="5.988 0 -3.458">
+        <a-entity id="cytokine4" gltf-model="#Cytokine" scale="0 0 0" position="-0.241 26.532 23.349"
+          move-cytokine="finalPos: -0.241 4.362 -2.419; maxScale: 0.500 0.500 0.500;"></a-entity>
+        <a-entity id="receptors2" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.500 0.500 0.500"
+          position="-0.730 0 -2.621" rotate-bone="boneName: Bone001; angle: 0.2; duration: 1000; cytokineId:cytokine4;"
+          rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine4;"></a-entity>
+        <a-entity id="receptors2" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.500 0.500 0.500"
+          position="0.129 0 -2.621" rotate-bone="boneName: Bone001; angle: 0.2; duration: 1000; cytokineId:cytokine4"
+          rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine4;"
+          rotation="0 180 0"></a-entity>
+      </a-entity>
+
+      <a-entity id="receptorGroup5" position="15.977 0 0.020">
+        <a-entity id="cytokine5" gltf-model="#Cytokine" scale="0 0 0" position="-0.241 26.532 23.349"
+          move-cytokine="finalPos: -0.241 4.362 -2.419; maxScale: 0.500 0.500 0.500;"></a-entity>
+        <a-entity id="receptors2" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.500 0.500 0.500"
+          position="-0.730 0 -2.621" rotate-bone="boneName: Bone001; angle: 0.2; duration: 1000; cytokineId:cytokine5;"
+          rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine5;"></a-entity>
+        <a-entity id="receptors2" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.500 0.500 0.500"
+          position="0.129 0 -2.621" rotate-bone="boneName: Bone001; angle: 0.2; duration: 1000; cytokineId:cytokine5"
+          rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine5;"
+          rotation="0 180 0"></a-entity>
+      </a-entity>
     </a-entity>
 
     <a-entity id="cell" position="-35.431 -1.353 0"></a-entity>
@@ -138,6 +152,9 @@
     <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
     <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane> -->
     <a-sky color="#00000"></a-sky>
+    <!-- <a-light type="ambient" color="#222"></a-light> -->
+    <a-entity light="intensity: 0.6; castShadow: true" position="-0.5 1 1"></a-entity>
+    <a-entity light="color: #BBB; type: ambient"></a-entity>
   </a-scene>
 </body>
 
