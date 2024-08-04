@@ -59,7 +59,7 @@ AFRAME.registerComponent('move-cytokine', {
 
       // Listen for the completion of the first animation
       el.addEventListener('animationcomplete__move', () => {
-        el.emit(`startAnim2`, null, false);
+        // el.emit(`startAnim2`, null, false);
       });
 
       el.addEventListener('animationcomplete__shrink', () => {

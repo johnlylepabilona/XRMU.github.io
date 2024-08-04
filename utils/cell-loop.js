@@ -62,8 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < 40; i++) {
       const modelEntity = document.createElement('a-entity');
       modelEntity.setAttribute('gltf-model', '#Cell');
-      const cellX = i * 1.5;
-      const cellZ = j * -1.5;
+      const cellX = i * 2;
+      const cellZ = j * -2;
 
       const animationAttr = `
       animDur: 900;

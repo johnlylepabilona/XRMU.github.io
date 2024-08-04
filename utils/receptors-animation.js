@@ -122,6 +122,50 @@ AFRAME.registerComponent('rotate-bone2', {
 });
 
 
+AFRAME.registerComponent('absorb-cytokine', {
+  schema: {
+    cytokineId: {type: 'string', default: 'cytokine1'}
+  },
+
+  init: function () {
+    this.spawn()
+  },
+
+  spawn: function () {
+    const data = this.data;
+    const el = this.el
+    const position = el.getAttribute('position')
+
+    const x = el.getAttribute('position').x;
+    const y = el.getAttribute('position').y;
+    const z = el.getAttribute('position').z;
+    console.log('`${position.x} ${position.y} ${position.z}`:', `${position.x} ${position.y} ${position.z}`)
+    console.log('`${position.x} -3.957 ${position.z}`:', `${position.x} -3.957 ${position.z}`)
+    el.setAttribute('animation__move-light', {
+      property: 'position',
+      to: `${position.x} -3.957 ${position.z}`,
+      dur: 3000,
+      // dir: 'alternate',
+      // delay: 1000,
+      easing: 'easeInOutSine',
+      startEvents: 'StartMoveLight'
+    })
+
+    document.querySelector(`#${data.cytokineId}`).addEventListener('animationcomplete__move', () => {
+      el.setAttribute('visible', true)
+      el.emit(`StartMoveLight`, null, false);
+    })
+
+    el.addEventListener('animationcomplete__move-light', () => {
+      el.setAttribute('visible', false)
+      el.setAttribute('position', `${x} ${y} ${z}`)
+      document.querySelector(`#${data.cytokineId}`).emit(`startAnim2`, null, false);
+    })
+  },
+
+});
+
+
 document.addEventListener('DOMContentLoaded', () => {
   const receptors = document.querySelector('#receptors');
 
