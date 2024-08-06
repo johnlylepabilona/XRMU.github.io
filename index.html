@@ -10,6 +10,7 @@
   <script src="./utils/cell-loop.js"></script>
   <script src="./utils/receptors-animation.js"></script>
   <script src="./utils/cytokine-animation.js"></script>
+  <script src="./utils/sky.js"></script>
 </head>
 
 <body>
@@ -37,6 +38,7 @@
         src="./assets/Type_ll_Cytokine_Receptor_with_bones_animated.glb"></a-assets-items>
       <a-assets-items id="Cytokine_1_fbx" src="./assets/Type ll Cytokine Receptor with bones.fbx"></a-assets-items>
       <a-assets-items id="Cell" src="./assets/Cell.glb"></a-assets-items>
+      <a-assets-items id="Plane" src="./assets/plane.glb"></a-assets-items>
     </a-assets>
 
     <!-- camera -->
@@ -44,6 +46,7 @@
 
     <!-- Plane -->
     <!-- <a-box color="green" scale="200 0.50 200" height="0.2"></a-box> -->
+    <a-entity id="Plane" gltf-model="#Plane" scale="0.200 0.200 0.200" rotation="0 180 0"></a-entity>
 
     <!-- Models -->
     <!-- <a-entity id="cytokine1" gltf-model="#Cytokine" scale="0.500 0.500 0.500" position="-0.241 26.532 -2.419"
@@ -233,12 +236,15 @@
     <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
     <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
     <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane> -->
-    <a-sky color="#00000"></a-sky>
+    <a-gradient-sky
+      material="shader: gradient; topColor: 0.118 0.341 0.6; bottomColor: 0.161 0.537 0.847; offset: 0; exponent: 0.6; side: double;"></a-gradient-sky>
+    <!-- <a-gradient-sky material="topColor:0 1 0; bottomColor:1 0 0;"></a-gradient-sky> -->
     <!-- <a-light type="ambient" color="#222"></a-light> -->
     <!-- <a-entity light="intensity: 0.6; castShadow: true" position="-0.5 1 1"></a-entity>
     <a-entity light="castShadow: true" position="27.71359 33.48456 52.87325"></a-entity> -->
     <a-entity light="" position="27.71359 33.48456 52.87325"></a-entity>
     <a-entity light="color: #BBB; type: ambient"></a-entity>
+
   </a-scene>
 </body>
 
