@@ -139,8 +139,6 @@ AFRAME.registerComponent('absorb-cytokine', {
     const x = el.getAttribute('position').x;
     const y = el.getAttribute('position').y;
     const z = el.getAttribute('position').z;
-    console.log('`${position.x} ${position.y} ${position.z}`:', `${position.x} ${position.y} ${position.z}`)
-    console.log('`${position.x} -3.957 ${position.z}`:', `${position.x} -3.957 ${position.z}`)
     el.setAttribute('animation__move-light', {
       property: 'position',
       to: `${position.x} -3.957 ${position.z}`,

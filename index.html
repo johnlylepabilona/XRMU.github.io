@@ -7,14 +7,17 @@
   <meta name="description" content="XRMU">
   <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.4.0/dist/aframe-extras.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/MozillaReality/ammo.js@8bbc0ea/builds/ammo.wasm.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.js"></script>
   <script src="./utils/cell-loop.js"></script>
   <script src="./utils/receptors-animation.js"></script>
   <script src="./utils/cytokine-animation.js"></script>
   <script src="./utils/sky.js"></script>
+  <script src="./utils/load-physics.js"></script>
 </head>
 
 <body>
-  <a-scene>
+  <a-scene physics="driver: ammo;debug: true;debugDrawMode: 1">
     <a-assets>
       <!-- Assets -->
       <a-assets-items id="Cytokine" src="./assets/Cytokine.glb"></a-assets-items>
@@ -44,9 +47,22 @@
     <!-- camera -->
     <a-camera position="0 0.500 5.860" fov="50" zoom="0.5"></a-camera>
 
+    <!-- <a-entity geometry="primitive: box" ammo-body="type: dynamic; mass: 1;" ammo-shape="type: box;"
+      position="0.132 5 34.627">
+      <a-box  position="0 0 0" depth="1" height="1" width="1" wasd-controls look-controls></a-box>
+      <a-entity camera wasd-controls look-controls></a-entity>
+    </a-entity> -->
+
+    <a-entity geometry="primitive: box" material="color: red" position="0 20 5" ammo-body="type: dynamic; mass: 1;"
+      ammo-shape="type: box;"></a-entity>
+
     <!-- Plane -->
     <!-- <a-box color="green" scale="200 0.50 200" height="0.2"></a-box> -->
-    <a-entity id="Plane" gltf-model="#Plane" scale="0.200 0.200 0.200" rotation="0 180 0"></a-entity>
+    <a-entity id="plane" gltf-model="#Plane" rotation="0 180 0" scale="0.5 0.5 0.5" position="0 -0.1 0"
+      autofit-gltf-ammo-sphere></a-entity>
+
+    <!-- <a-entity gltf-model=" #Plane" geometry="primitive: box;" material="color: gray" position="0 -5 0"
+      ammo-body="type: static" ammo-shape="type: box; halfExtents: 5 0.05 5"></a-entity> -->
 
     <!-- Models -->
     <!-- <a-entity id="cytokine1" gltf-model="#Cytokine" scale="0.500 0.500 0.500" position="-0.241 26.532 -2.419"
