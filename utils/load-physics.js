@@ -1,4 +1,4 @@
-AFRAME.registerComponent("autofit-gltf-ammo-sphere", {
+AFRAME.registerComponent("autofit-gltf-ammo", {
   init() {
     this.el.addEventListener("model-loaded", () => {
       console.log("Model loaded");

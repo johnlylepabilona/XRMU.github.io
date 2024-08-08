@@ -14,10 +14,11 @@
   <script src="./utils/cytokine-animation.js"></script>
   <script src="./utils/sky.js"></script>
   <script src="./utils/load-physics.js"></script>
+  <script src="./utils/extra-controls.js"></script>
 </head>
 
 <body>
-  <a-scene physics="driver: ammo;debug: true;debugDrawMode: 1">
+  <a-scene>
     <a-assets>
       <!-- Assets -->
       <a-assets-items id="Cytokine" src="./assets/Cytokine.glb"></a-assets-items>
@@ -45,21 +46,13 @@
     </a-assets>
 
     <!-- camera -->
-    <a-camera position="0 0.500 5.860" fov="50" zoom="0.5"></a-camera>
-
-    <!-- <a-entity geometry="primitive: box" ammo-body="type: dynamic; mass: 1;" ammo-shape="type: box;"
-      position="0.132 5 34.627">
-      <a-box  position="0 0 0" depth="1" height="1" width="1" wasd-controls look-controls></a-box>
-      <a-entity camera wasd-controls look-controls></a-entity>
-    </a-entity> -->
-
-    <a-entity geometry="primitive: box" material="color: red" position="0 20 5" ammo-body="type: dynamic; mass: 1;"
-      ammo-shape="type: box;"></a-entity>
+    <!-- <a-camera id="camera" position="0 0.500 5.860" fov="50" zoom="0.5" fly></a-camera> -->
+    <a-entity id="rig" movement-controls vertical-movement>
+      <a-entity id="camera" camera="fov: 50; zoom:0.5" position="0 0.500 5.860" look-controls></a-entity>
+    </a-entity>
 
     <!-- Plane -->
-    <!-- <a-box color="green" scale="200 0.50 200" height="0.2"></a-box> -->
-    <a-entity id="plane" gltf-model="#Plane" rotation="0 180 0" scale="0.5 0.5 0.5" position="0 -0.1 0"
-      autofit-gltf-ammo-sphere></a-entity>
+    <a-entity id="plane" gltf-model="#Plane" rotation="0 180 0" scale="0.5 0.5 0.5" position="0 -0.4 0"></a-entity>
 
     <!-- <a-entity gltf-model=" #Plane" geometry="primitive: box;" material="color: gray" position="0 -5 0"
       ammo-body="type: static" ammo-shape="type: box; halfExtents: 5 0.05 5"></a-entity> -->
