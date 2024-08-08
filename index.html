@@ -43,6 +43,7 @@
       <a-assets-items id="Cytokine_1_fbx" src="./assets/Type ll Cytokine Receptor with bones.fbx"></a-assets-items>
       <a-assets-items id="Cell" src="./assets/Cell.glb"></a-assets-items>
       <a-assets-items id="Plane" src="./assets/plane.glb"></a-assets-items>
+      <a-assets-items id="Nuclues" src="./assets/nuclues.glb"></a-assets-items>
     </a-assets>
 
     <!-- camera -->
@@ -54,32 +55,22 @@
     <!-- Plane -->
     <a-entity id="plane" gltf-model="#Plane" rotation="0 180 0" scale="0.5 0.5 0.5" position="0 -0.4 0"></a-entity>
 
+    <!-- Sky -->
+    <a-gradient-sky
+      material="shader: gradient; topColor: 0.118 0.341 0.6; bottomColor: 0.161 0.537 0.847; offset: 0; exponent: 0.6; side: double;"></a-gradient-sky>
+    <!-- light -->
+    <a-entity light="" position="27.71359 33.48456 52.87325"></a-entity>
+    <a-entity light="color: #BBB; type: ambient"></a-entity>
+
     <!-- <a-entity gltf-model=" #Plane" geometry="primitive: box;" material="color: gray" position="0 -5 0"
       ammo-body="type: static" ammo-shape="type: box; halfExtents: 5 0.05 5"></a-entity> -->
 
-    <!-- Models -->
-    <!-- <a-entity id="cytokine1" gltf-model="#Cytokine" scale="0.500 0.500 0.500" position="-0.241 26.532 -2.419"
-      move-cytokine></a-entity> -->
-    <!-- <a-entity gltf-model="#Cytokine_1" scale="0.300 0.300 0.300" position="5.184 5.567 0"></a-entity> -->
-    <!-- <a-entity gltf-model="#JAK_1" scale="0.300 0.300 0.300" position="4.746 2.866 0"></a-entity>
-    <a-entity gltf-model="#JAK_2" scale="0.300 0.300 0.300" position="-7.949 5.759 0"></a-entity>
-    <a-entity gltf-model="#STAT_Dimers" scale="0.300 0.300 0.300" position="1.536 5.909 0"></a-entity>
-    <a-entity gltf-model="#Type_l_Cytokine_Receptor_L" scale="0.300 0.300 0.300" position="-7.128 -0.411 0"></a-entity>
-    <a-entity gltf-model="#Type_l_Cytokine_Receptor_R" scale="0.300 0.300 0.300" position="-5.047 -0.484 0"></a-entity>
-    <a-entity gltf-model="#Type_ll_Cytokine_Receptor_L_Lower" scale="0.300 0.300 0.300"
-      position="5.969 -0.794 0"></a-entity>
-    <a-entity gltf-model="#Type_ll_Cytokine_Receptor_L_Upper" scale="0.300 0.300 0.300"
-      position="5.878 -0.904 0"></a-entity>
-    <a-entity gltf-model="#Type_ll_Cytokine_Receptor_R_Lower" scale="0.300 0.300 0.300"
-      position="2.492 -0.785 0"></a-entity>
-    <a-entity gltf-model="#Type_ll_Cytokine_Receptor_R_Upper" scale="0.300 0.300 0.300"
-      position="2.784 -0.996 0"></a-entity> -->
 
     <!-- Receptors inside cells -->
     <a-entity id="receptors">
       <a-entity id="receptorGroup1" position="4.851 0 0.000">
         <a-entity id="cytokine1" gltf-model="#Cytokine" scale="0 0 0" position="7.494 26.532 -2.419"
-          move-cytokine="finalPos: -0.241 4.362 -2.419; maxScale: 0.500 0.500 0.500;"></a-entity>
+          move-cytokine="finalPos: -0.241 4.362 -2.419; maxScale: 0.500 0.500 0.500;" color="red"></a-entity>
         <a-entity id="receptors1" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.500 0.500 0.500"
           position="-0.637 0 -2.621" rotate-bone="boneName: Bone001; angle: 0.1; duration: 1000; cytokineId:cytokine1;"
           rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine1;"></a-entity>
@@ -224,35 +215,15 @@
       </a-entity>
     </a-entity>
 
+    <!-- Cells -->
     <a-entity id="cell" position="-35.431 -1.353 0"></a-entity>
 
 
-    <!-- Working animation from blender -->
-    <!-- <a-entity gltf-model="#Type_ll_Cytokine_Receptor_with_bones_animated" scale="0.300 0.300 0.300" position="3 1.472 0"
-      animation-mixer="clip: *">
-    </a-entity> -->
-    <!-- Working FBX files -->
-    <!-- <a-entity fbx-model="src: url(./assets/Type ll Cytokine Receptor with bones.fbx)" animation-mixer="clip: *">
+    <!-- Nuclues -->
+    <a-entity id="nuclues-process">
+      <a-entity id="nuclues" gltf-model="#Nuclues" position="0 -90 -10" scale="2 2 2"></a-entity>
     </a-entity>
-    <a-entity fbx-model="src: url(./assets/Cytokine_1_fbx.fbx)"></a-entity>
-    <a-entity fbx-model="src: url(./assets/STAT Dimers.fbx)"></a-entity>
-    <a-entity fbx-model="src: url(./assets/cell LP.fbx)"></a-entity> -->
 
-
-
-
-    <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-    <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-    <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-    <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane> -->
-    <a-gradient-sky
-      material="shader: gradient; topColor: 0.118 0.341 0.6; bottomColor: 0.161 0.537 0.847; offset: 0; exponent: 0.6; side: double;"></a-gradient-sky>
-    <!-- <a-gradient-sky material="topColor:0 1 0; bottomColor:1 0 0;"></a-gradient-sky> -->
-    <!-- <a-light type="ambient" color="#222"></a-light> -->
-    <!-- <a-entity light="intensity: 0.6; castShadow: true" position="-0.5 1 1"></a-entity>
-    <a-entity light="castShadow: true" position="27.71359 33.48456 52.87325"></a-entity> -->
-    <a-entity light="" position="27.71359 33.48456 52.87325"></a-entity>
-    <a-entity light="color: #BBB; type: ambient"></a-entity>
 
   </a-scene>
 </body>
