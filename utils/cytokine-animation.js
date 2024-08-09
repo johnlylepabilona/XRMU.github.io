@@ -3,7 +3,6 @@ AFRAME.registerComponent('move-cytokine', {
     finalPos: { type: 'string', default: '-0.241 4.362 -2.419' },
     maxScale: { type: 'string', default: '-0.241 4.362 -2.419' },
     duration: { type: 'number', default: 1000 },
-    pauseDuration: { type: 'number', default: 10000},
   },
 
   init: function () {

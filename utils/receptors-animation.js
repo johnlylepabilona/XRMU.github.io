@@ -124,7 +124,8 @@ AFRAME.registerComponent('rotate-bone2', {
 
 AFRAME.registerComponent('absorb-cytokine', {
   schema: {
-    cytokineId: {type: 'string', default: 'cytokine1'}
+    cytokineId: {type: 'string', default: 'cytokine1'},
+    jakIDs: {type: 'array', default: []}
   },
 
   init: function () {
@@ -158,6 +159,13 @@ AFRAME.registerComponent('absorb-cytokine', {
       el.setAttribute('visible', false)
       el.setAttribute('position', `${x} ${y} ${z}`)
       document.querySelector(`#${data.cytokineId}`).emit(`startAnim2`, null, false);
+
+      if (data.jakIDs.length) {
+        for (let i = 0; i < data.jakIDs.length; i++) {
+          const jak = data.jakIDs[i]
+          document.querySelector(`#${jak}`).emit('startStatMove', null, false)
+        }
+      }
     })
   },
 
