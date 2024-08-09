@@ -163,7 +163,7 @@ AFRAME.registerComponent('absorb-cytokine', {
       if (data.jakIDs.length) {
         for (let i = 0; i < data.jakIDs.length; i++) {
           const jak = data.jakIDs[i]
-          document.querySelector(`#${jak}`).emit('startStatMove', null, false)
+          document.querySelector(`#${jak}`).emit('startJakMove', null, false)
         }
       }
     })
