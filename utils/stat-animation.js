@@ -223,21 +223,36 @@ AFRAME.registerComponent('move-stat', {
 
             dimers.emit('startMovingDimers', null, false)
             const {x: dimersX, y:dimersY, z:dimersZ } = dimers.getAttribute('position')
-            dimers.setAttribute('animation__dimers-to-nuclues', {
+
+            const nucleus = document.querySelector('#nucleus')
+
+            const nucleusWorldPosition = new THREE.Vector3()
+            const dimersWorldPosition = new THREE.Vector3()
+
+            nucleus.object3D.getWorldPosition(nucleusWorldPosition)
+            dimers.object3D.getWorldPosition(dimersWorldPosition)
+
+            const relativePosition = new THREE.Vector3()
+            const randomX =  Math.floor(Math.random() * (-20 - -40)) + -40;
+            relativePosition.subVectors({x: randomX, y:-79, z:-5}, dimersWorldPosition)
+
+            const {x: targetsX, y:targetsY, z:targetsZ } = relativePosition
+
+            dimers.setAttribute('animation__dimers-to-nucleus', {
               property: 'position',
               from: `${dimersX} ${dimersY} ${dimersZ}`,
-              to: `-46.169 -74.186 -5.863`,
+              to: `${targetsX} ${targetsY} ${targetsZ}`,
               easing: 'easeInOutSine',
               dur: 2000,
-              startEvents: 'startDimersToNuclues'
+              startEvents: 'startDimersToNucleus'
             })
-            dimers.emit('startDimersToNuclues', null, false)
+            dimers.emit('startDimersToNucleus', null, false)
             const jaks = document.querySelector(`#${data.jakID}`).parentEl.children
             for (let i = 0; i < jaks.length; i++) {
               jaks[i].emit('startJakShrink', null, false)              
             }
 
-            dimers.addEventListener('animationcomplete__dimers-to-nuclues', () => {
+            dimers.addEventListener('animationcomplete__dimers-to-nucleus', () => {
               setTimeout(() => {
                 dimers.components.dimers.reset()
               }, 3000);
