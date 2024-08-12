@@ -33,6 +33,13 @@ AFRAME.registerComponent('move-jak', {
           easing: 'easeInOutSine',
           startEvents: 'startSphereSpawn1'
         })
+        sphere1.setAttribute('animation__shrink-sphere1', {
+          property: 'radius',
+          from: 0.5,
+          to: 0,
+          easing: 'easeInOutSine',
+          startEvents: 'startSphereShrink1'
+        })
         sphere2.setAttribute('animation__spawn-sphere2', {
           property: 'radius',
           from: sphereRadius,
@@ -86,10 +93,10 @@ AFRAME.registerComponent('move-jak', {
       //   el.emit('startJakShrink', null, false)
       // })
 
-      // el.addEventListener('animationcomplete__shrink-jak', () => {
-      //   el.setAttribute('position', `${jakX} ${jakY} ${jakZ}`)
-      //   el.setAttribute('scale', `${jakScaleX} ${jakScaleY} ${jakScaleZ}`)
-      // })
+      el.addEventListener('animationcomplete__shrink-jak', () => {
+        el.setAttribute('position', `${jakX} ${jakY} ${jakZ}`)
+        el.setAttribute('scale', `${jakScaleX} ${jakScaleY} ${jakScaleZ}`)
+      })
     })
   }
 });
@@ -141,6 +148,28 @@ AFRAME.registerComponent('move-stat', {
         if (data.rotate) {
           sphere1.addEventListener('animationcomplete__spawn-sphere1', () => {
             el.emit('startStat2Rotate', null, false)
+
+            const dimers = document.querySelector(`#${data.dimerID}`)
+            const dimersPosition = dimers.getAttribute('position')
+    
+            const {x: dimersX, y:dimersY, z:dimersZ } = dimersPosition
+    
+            dimers.setAttribute('animation__move-down-dimers', {
+              property: 'position',
+              from: `${dimersX} ${dimersY} ${dimersZ}`,
+              to: `0 -4.868 0`,
+              easing: 'easeInOutSine',
+              startEvents: 'startMovingDimers'
+            })
+
+            const jaks = document.querySelector(`#${data.jakID}`).parentEl.children
+
+            for (let i = 0; i < jaks.length; i++) {
+              jaks[i].children[0].emit('startSphereShrink1', null, false)              
+            }
+
+            dimers.emit('startMovingDimers', null, false)
+    
           })
         }
       }
@@ -165,7 +194,6 @@ AFRAME.registerComponent('move-stat', {
           easing: 'easeInOutSine',
           startEvents: 'startStat2Rotate'
         })
-
         el.addEventListener('animationcomplete__rotate-stat2', () => {
           const dimers = document.querySelector(`#${data.dimerID}`)
           const [dimer1, dimer2] = dimers.children
@@ -192,6 +220,8 @@ AFRAME.registerComponent('move-stat', {
           dimer2.emit('startMergeDimer', null, false)
 
           dimer2.addEventListener('animationcomplete__merge-to-stat1', () => {
+
+            dimers.emit('startMovingDimers', null, false)
             const {x: dimersX, y:dimersY, z:dimersZ } = dimers.getAttribute('position')
             dimers.setAttribute('animation__dimers-to-nuclues', {
               property: 'position',
@@ -202,6 +232,10 @@ AFRAME.registerComponent('move-stat', {
               startEvents: 'startDimersToNuclues'
             })
             dimers.emit('startDimersToNuclues', null, false)
+            const jaks = document.querySelector(`#${data.jakID}`).parentEl.children
+            for (let i = 0; i < jaks.length; i++) {
+              jaks[i].emit('startJakShrink', null, false)              
+            }
 
             dimers.addEventListener('animationcomplete__dimers-to-nuclues', () => {
               setTimeout(() => {

@@ -44,7 +44,7 @@
       <a-assets-items id="Cytokine_1_fbx" src="./assets/Type ll Cytokine Receptor with bones.fbx"></a-assets-items>
       <a-assets-items id="Cell" src="./assets/Cell.glb"></a-assets-items>
       <a-assets-items id="Plane" src="./assets/plane.glb"></a-assets-items>
-      <a-assets-items id="Nuclues" src="./assets/nuclues.glb"></a-assets-items>
+      <a-assets-items id="Nuclues" src="./assets/nuclues1.glb"></a-assets-items>
       <a-assets-items id="Stat1" src="./assets/Stat_1.glb"></a-assets-items>
       <a-assets-items id="Stat2" src="./assets/Stat_2.glb"></a-assets-items>
     </a-assets>
@@ -78,12 +78,12 @@
         <!-- receptors -->
         <a-entity id="receptors1" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.600 0.600 0.500"
           position="-0.637 -0.470 -2.621"
-          rotate-bone="boneName: Bone001; angle: 0.1; duration: 1000; cytokineId:cytokine1;"
-          rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine1;"></a-entity>
+          rotate-bone="boneName: Bone001; angle: 0.1; duration: 1000; cytokineId:cytokine1; dimerID: dimer1;"
+          rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine1; dimerID: dimer1;"></a-entity>
         <a-entity id="receptors1" gltf-model="#Type_ll_Cytokine_Receptor_with_bones_4" scale="0.600 0.600 0.500"
           position="-0.035 -0.470 -2.621"
-          rotate-bone="boneName: Bone001; angle: 0.1; duration: 1000; cytokineId:cytokine1;"
-          rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine1;"
+          rotate-bone="boneName: Bone001; angle: 0.1; duration: 1000; cytokineId:cytokine1; dimerID: dimer1;"
+          rotate-bone2="boneName: Bone004; angle: -0.1; duration: 1000; cytokineId:cytokine1; dimerID: dimer1;"
           rotation="0 180 0"></a-entity>
 
         <a-entity light="angle: 55; color: #ffffff; decay: 0; distance: 1; penumbra: 1; type: spot"
@@ -91,15 +91,17 @@
           visible="false"></a-entity>
 
         <!-- Jaks -->
-        <a-entity id="jak1" gltf-model="#JAK_1" position="-44.296 -67.153 19.067" scale="0.600 0.600 0.600"
-          move-jak="finalPos: -4.729 -4.317 -3.655;">
-          <a-sphere color="yellow" radius="0" position="2.510 1.598 1.354"></a-sphere>
-          <a-sphere color="yellow" radius="0" position="4.554 -3.893 1.493"></a-sphere>
-        </a-entity>
-        <a-entity id="jak2" gltf-model="#JAK_2" position="18.831 -69.037 61.044" scale="0.600 0.600 0.600"
-          move-jak="finalPos: 3.655 -4.317 -3.655;">
-          <a-sphere color="yellow" radius="0" position="-3.198 1.598 1.354"></a-sphere>
-          <a-sphere color="yellow" radius="0" position="-3.950 -3.929 1.493"></a-sphere>
+        <a-entity id="jakGroup1">
+          <a-entity id="jak1" gltf-model="#JAK_1" position="-44.296 -67.153 19.067" scale="0.600 0.600 0.600"
+            move-jak="finalPos: -4.729 -4.317 -3.655;">
+            <a-sphere color="yellow" radius="0" position="2.510 1.598 1.354"></a-sphere>
+            <a-sphere color="yellow" radius="0" position="4.554 -3.893 1.493"></a-sphere>
+          </a-entity>
+          <a-entity id="jak2" gltf-model="#JAK_2" position="18.831 -69.037 61.044" scale="0.600 0.600 0.600"
+            move-jak="finalPos: 3.655 -4.317 -3.655;">
+            <a-sphere color="yellow" radius="0" position="-3.198 1.598 1.354"></a-sphere>
+            <a-sphere color="yellow" radius="0" position="-3.950 -3.929 1.493"></a-sphere>
+          </a-entity>
         </a-entity>
 
         <!-- Stats -->

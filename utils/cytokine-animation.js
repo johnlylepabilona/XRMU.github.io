@@ -51,7 +51,6 @@ AFRAME.registerComponent('move-cytokine', {
         from: data.maxScale,
         to: `${cytokineScaleX} ${cytokineScaleY} ${cytokineScaleZ}`,
         dur: 2000,
-        delay: 2000,
         easing: 'easeInOutSine',
         startEvents: 'startAnim2'
       });

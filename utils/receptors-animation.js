@@ -3,7 +3,8 @@ AFRAME.registerComponent('rotate-bone', {
     boneName: {type: 'string'},
     angle: {type: 'number', default: 0.1},
     duration: {type: 'number', default: 1000},
-    cytokineId: {type: 'string', default: 'cytokine1'}
+    cytokineId: {type: 'string', default: 'cytokine1'},
+    dimerID: {type: 'string', default: 'dimer1'},
   },
   init: function () {
     this.bone = null;
@@ -53,9 +54,13 @@ AFRAME.registerComponent('rotate-bone', {
     document.querySelector(`#${data.cytokineId}`).addEventListener('animationcomplete__move', () => {
       animateTo(data.angle, data.duration);
     })
-
-    document.querySelector(`#${data.cytokineId}`).addEventListener('animationcomplete__shrink', () => {
-      animateTo(this.initialRotationZ, data.duration);
+    const dimers = document.querySelector(`#${data.dimerID}`)
+    const [dimer1, dimer2] = dimers.children
+    dimer2.addEventListener('animationcomplete__merge-to-stat1', () => {
+      document.querySelector(`#${data.cytokineId}`).emit(`startAnim2`, null, false);
+      setTimeout(() => {
+        animateTo(this.initialRotationZ, data.duration);
+      }, 2000);
     })
   }
 });
@@ -65,7 +70,8 @@ AFRAME.registerComponent('rotate-bone2', {
     boneName: {type: 'string'},
     angle: {type: 'number', default: 0.1},
     duration: {type: 'number', default: 1000},
-    cytokineId: {type: 'string', default: 'cytokine1'}
+    cytokineId: {type: 'string', default: 'cytokine1'},
+    dimerID: {type: 'string', default: 'dimer1'},
   },
   init: function () {
     this.bone = null;
@@ -115,8 +121,12 @@ AFRAME.registerComponent('rotate-bone2', {
       animateTo(data.angle, data.duration);
     })
 
-    document.querySelector(`#${data.cytokineId}`).addEventListener('animationcomplete__shrink', () => {
-      animateTo(this.initialRotationX, data.duration);
+    const dimers = document.querySelector(`#${data.dimerID}`)
+    const [dimer1, dimer2] = dimers.children
+    dimer2.addEventListener('animationcomplete__merge-to-stat1', () => {
+      setTimeout(() => {
+        animateTo(this.initialRotationX, data.duration);
+      }, 2000);
     })
   }
 });
@@ -158,7 +168,7 @@ AFRAME.registerComponent('absorb-cytokine', {
     el.addEventListener('animationcomplete__move-light', () => {
       el.setAttribute('visible', false)
       el.setAttribute('position', `${x} ${y} ${z}`)
-      document.querySelector(`#${data.cytokineId}`).emit(`startAnim2`, null, false);
+      // document.querySelector(`#${data.cytokineId}`).emit(`startAnim2`, null, false);
 
       if (data.jakIDs.length) {
         for (let i = 0; i < data.jakIDs.length; i++) {
