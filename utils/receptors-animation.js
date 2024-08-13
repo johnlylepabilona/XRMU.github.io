@@ -195,27 +195,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   for (let i = 0; i < receptors.children.length; i++) {
     const el = receptors.children[i];
-    for (let j = 0; j < el.children.length; j++) {
-      const receptor = el.children[j]
-      if(receptor.id.includes('receptors')) {
-        checkModelLoaded(el, () => {
-          const position = receptor.object3D.position;
-    
-          const cellX = position.x;
-          const cellZ = position.z;
-    
-          receptor.setAttribute('animation', {
-            property: 'position',
-            from: `${cellX} 0 ${cellZ}`,
-            to: `${cellX} 0.2 ${cellZ}`,
-            loop: true,
-            dur: 900,
-            dir: 'alternate',
-            delay: i * 1000,
-            easing: 'easeInOutSine'
-          });
-        });
-      }
-    }
+
+    checkModelLoaded(el, () => {
+      const position = el.object3D.position;
+
+      const cellX = position.x;
+      const cellZ = position.z;
+
+      el.setAttribute('animation', {
+        property: 'position',
+        from: `${cellX} 0 ${cellZ}`,
+        to: `${cellX} 0.2 ${cellZ}`,
+        loop: true,
+        dur: 900,
+        dir: 'alternate',
+        delay: i * 1000,
+        easing: 'easeInOutSine'
+      });
+    });
   }
 });
