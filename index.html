@@ -9,6 +9,9 @@
   <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.4.0/dist/aframe-extras.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/MozillaReality/ammo.js@8bbc0ea/builds/ammo.wasm.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/gh/c-frame/aframe-particle-system-component@1.1.4/dist/aframe-particle-system-component.min.js"></script>
+
   <script src="./utils/cell-loop.js"></script>
   <script src="./utils/receptors-animation.js"></script>
   <script src="./utils/cytokine-animation.js"></script>
@@ -56,14 +59,18 @@
     </a-entity>
 
     <!-- Plane -->
-    <a-entity id="plane" gltf-model="#Plane" rotation="0 180 0" scale="0.5 0.5 0.5" position="0 -0.4 0"></a-entity>
+    <a-entity id="plane" gltf-model="#Plane" rotation="0 180 0" scale="0.2 0.2 0.2" position="0 -0.4 0"></a-entity>
 
     <!-- Sky -->
     <a-gradient-sky
       material="shader: gradient; topColor: 0.118 0.341 0.6; bottomColor: 0.161 0.537 0.847; offset: 0; exponent: 0.6; side: double;"></a-gradient-sky>
+
     <!-- light -->
     <a-entity light="" position="27.71359 33.48456 52.87325"></a-entity>
     <a-entity light="color: #BBB; type: ambient"></a-entity>
+
+    <a-entity position="0 100 0" rotation="-2.311 5.453 -40.143" accelerationSpread="0.1 0 0.1"
+      particle-system="preset: snow; size:3; "></a-entity>
 
     <!-- <a-entity gltf-model=" #Plane" geometry="primitive: box;" material="color: gray" position="0 -5 0"
       ammo-body="type: static" ammo-shape="type: box; halfExtents: 5 0.05 5"></a-entity> -->
