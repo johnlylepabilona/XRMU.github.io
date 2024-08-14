@@ -161,6 +161,12 @@ AFRAME.registerComponent('absorb-cytokine', {
     })
 
     document.querySelector(`#${data.cytokineId}`).addEventListener('animationcomplete__move', () => {
+      if (data.jakIDs.length) {
+        for (let i = 0; i < data.jakIDs.length; i++) {
+          const jak = data.jakIDs[i]
+          document.querySelector(`#${jak}`).setAttribute('visible', true)
+        }
+      }
       el.setAttribute('visible', true)
       el.emit(`StartMoveLight`, null, false);
     })

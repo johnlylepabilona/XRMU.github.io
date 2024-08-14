@@ -233,8 +233,8 @@ AFRAME.registerComponent('move-stat', {
             dimers.object3D.getWorldPosition(dimersWorldPosition)
 
             const relativePosition = new THREE.Vector3()
-            const randomX =  Math.floor(Math.random() * (0 - -30)) + -30;
-            relativePosition.subVectors({x: randomX, y:-75, z: 5}, dimersWorldPosition)
+            const randomX =  Math.floor(Math.random() * (-20 - -5)) + -5;
+            relativePosition.subVectors({x: randomX, y:-67, z: 0}, dimersWorldPosition)
 
             const {x: targetsX, y:targetsY, z:targetsZ } = relativePosition
 
@@ -250,6 +250,7 @@ AFRAME.registerComponent('move-stat', {
             const jaks = document.querySelector(`#${data.jakID}`).parentEl.children
             for (let i = 0; i < jaks.length; i++) {
               jaks[i].emit('startJakShrink', null, false)              
+              jaks[i].setAttribute('visible', false)              
             }
 
             dimers.addEventListener('animationcomplete__dimers-to-nucleus', () => {
