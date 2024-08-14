@@ -233,8 +233,8 @@ AFRAME.registerComponent('move-stat', {
             dimers.object3D.getWorldPosition(dimersWorldPosition)
 
             const relativePosition = new THREE.Vector3()
-            const randomX =  Math.floor(Math.random() * (-20 - -40)) + -40;
-            relativePosition.subVectors({x: randomX, y:-79, z:-5}, dimersWorldPosition)
+            const randomX =  Math.floor(Math.random() * (0 - -30)) + -30;
+            relativePosition.subVectors({x: randomX, y:-75, z: 5}, dimersWorldPosition)
 
             const {x: targetsX, y:targetsY, z:targetsZ } = relativePosition
 
